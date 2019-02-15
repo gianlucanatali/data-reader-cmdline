@@ -1,13 +1,14 @@
 # DataReader
 This command line application, wrote with C# reads data from the PI Data Archive.  
- 
+
 
 # Build
 Once compiled, it created a **Build** folder in the solution folder.  You can take this folder and place it on the system you would like to make the test on.
 
 # Prerequisites on host system
-* .NET Framework 4.5+
-* AFSDK 2.8+, for bulk calls support and also for the new *PIPointQuery.ParseQuery* method introduced in this version.
+* .NET Framework 4.6.2+
+* AFSDK 4.0.0.0+ For dependency on NETFramework
+* This code can be built also for AFSDK 2.8+ by changing project ddl dependencies and Net Framework target to 4.5.2, for bulk calls support and also for the new *PIPointQuery.ParseQuery* method introduced in this version.
 
 # Getting started
 
@@ -15,12 +16,12 @@ Once compiled, it created a **Build** folder in the solution folder.  You can ta
 
 Before starting your data retrieval, it is best to check the tag filters you will be using to make sure you will have all the tags you need.  The application will start reading the data faster if you provide several small queries instead of a big one (e.g. *).
 
-This command line will make 5 queries to get PI Tags.  Queries needs to be built on the [PIPointQuery syntax][1].  Each query needs to be separated by a space.  Put your query in quotes if it contain spaces. 
-`datareader.exe --server PIServer01 --testTagSearch sinus* cdt* "tag:<>sin* DataType:Float" "PointSource:=#" "PointSource:=C"`
+This command line will make 5 queries to get PI Tags.  Queries needs to be built on the [PIPointQuery syntax][1].  Each query needs to be separated by a space.  Put your query in quotes if it contain spaces.
+`Datareader.exe --server PIServer01 --testTagSearch sinus* cdt* "tag:<>sin* DataType:Float" "PointSource:=#" "PointSource:=C"`
 
 If you would like to see what are the tags that are included in your query, add *--printTags* command.
 Example:
-`datareader.exe --server PIServer01 --testTagSearch "tag:=Unit1* AND Location1:=1 AND PointSource:=OPC" --printTags`
+`Datareader.exe --server PIServer01 --testTagSearch "tag:=Unit1* AND Location1:=1 AND PointSource:=OPC" --printTags`
 
 
 ## Read data
@@ -96,4 +97,3 @@ It has yet to be tested on a server with a lot more tags.
 
 
 [1]:https://techsupport.osisoft.com/Documentation/PI-AF-SDK/html/b8fbb6da-7a4b-4570-a09d-7f2b85ed204d.htm
-
